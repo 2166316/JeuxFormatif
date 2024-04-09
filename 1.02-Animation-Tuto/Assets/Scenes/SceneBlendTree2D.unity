@@ -576,6 +576,108 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1227961480
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4843473
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.6708163
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      propertyPath: m_Name
+      value: Eve By J.Gonzales
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1227961482}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1227961483}
+  m_SourcePrefab: {fileID: 100100000, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+--- !u!1 &1227961481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b100d25117087754398b1aef9fca7c9c, type: 3}
+  m_PrefabInstance: {fileID: 1227961480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1227961482
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227961481}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b5cee6788dc96e4b95a505ea24a2c0b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1227961483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227961481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56fe24499f2a210408a189b32b57a789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1227961482}
 --- !u!1 &1930930271
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,3 +820,4 @@ SceneRoots:
   - {fileID: 971702326}
   - {fileID: 996664359}
   - {fileID: 1930930276}
+  - {fileID: 1227961480}

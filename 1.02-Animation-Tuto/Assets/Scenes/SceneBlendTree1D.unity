@@ -886,7 +886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 1
   deceleration: 3
-  vitesseMax: 3
+  vitesseMax: 6
   vitesseRotation: 75
 --- !u!95 &2119318046
 Animator:

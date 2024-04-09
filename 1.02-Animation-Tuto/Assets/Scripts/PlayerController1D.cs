@@ -9,7 +9,7 @@ public class PlayerController1D : MonoBehaviour
     public float deceleration = 3f;
 
    
-    public float vitesseMax = 3f;
+    public float vitesseMax = 6f;
     public float vitesseRotation = 75.0f;
 
     //Un parametre qui contient la vitesse de course de notre personnage
@@ -42,11 +42,11 @@ public class PlayerController1D : MonoBehaviour
         //Cette partie gere l'input de l'utilisateur
         float avance= 0f;
         avance = Input.GetAxis("Vertical");
-
+        Debug.Log( animator.GetFloat(animatorVitesseHash) + "");
 
         //Cette partie gere le déplacement du player
         //Tant qu'on appuie sur avance, la vitesse augmente (lavitesse est fonction de la vitesse à la frame précédente
-        if (avance != 0 & vitesse < vitesseMax)
+        if (avance != 0 && vitesse < vitesseMax)
         {
             vitesse += Time.deltaTime * acceleration;
 
