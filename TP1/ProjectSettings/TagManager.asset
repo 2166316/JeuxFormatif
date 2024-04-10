@@ -6,6 +6,8 @@ TagManager:
   tags:
   - AI
   - Goal
+  - Plateforme
+  - CrawlSpace
   layers:
   - Default
   - TransparentFX
