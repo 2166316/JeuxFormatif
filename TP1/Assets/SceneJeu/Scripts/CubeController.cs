@@ -18,8 +18,8 @@ public class CubeController : MonoBehaviour
     void Start()
     {
         //base
-        zPosMax = 24f;
-        zPosMin = 19f;
+        zPosMax = 25f;
+        zPosMin = 18f;
         if(transform.position.z >= zPosMax){
             moveUp = false;
         }

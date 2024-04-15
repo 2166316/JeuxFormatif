@@ -9,7 +9,7 @@ public class PlayerCamera : MonoBehaviour
     public Vector3 offset;   
     //offset approprié 0f, 2f, -5f
     void Start(){
-        offset = new Vector3(0f, 2f, -5f);
+        offset = new Vector3(-5f, 2f, 0f);
     }
 
     void Update(){

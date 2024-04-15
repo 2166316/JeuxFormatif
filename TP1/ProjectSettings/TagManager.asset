@@ -8,6 +8,7 @@ TagManager:
   - Goal
   - Plateforme
   - CrawlSpace
+  - Walk
   layers:
   - Default
   - TransparentFX

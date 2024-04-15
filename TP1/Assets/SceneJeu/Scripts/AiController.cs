@@ -66,6 +66,8 @@ public class AiController : MonoBehaviour
                 float nbSeconde = 10f;
                 StartCoroutine(RestartParticlesAfterDelay(particleSystem, nbSeconde));
                 StartCoroutine(StopPlayerDance());
+            }else{
+                changeGoal();
             }
         }
 
@@ -73,7 +75,12 @@ public class AiController : MonoBehaviour
         if(coll.gameObject.tag == "CrawlSpace"){
             print(1);
             animator.SetBool(animatorCrawlHash, true);
-            ai.speed = 0.11f;
+            ai.speed = 0.8f;
+        }
+        else if(coll.gameObject.tag == "Walk"){
+            print(2);
+             animator.SetBool(animatorCrawlHash, false);
+            ai.speed = 1f;
         }
         else{
             print(3);
@@ -87,6 +94,7 @@ public class AiController : MonoBehaviour
     void Update()
     {
         if(!isdancing){
+            ai.isStopped = false;
             ai.SetDestination(goalActual.transform.position);
 
             float currentSpeed = ai.velocity.magnitude;
@@ -103,9 +111,8 @@ public class AiController : MonoBehaviour
         animator.SetFloat(animatorBlendHash,1);
         yield return new WaitForSeconds(1f);
         animator.SetFloat(animatorBlendHash,2);
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(2f);
         animator.SetFloat(animatorBlendHash,0);
-        ai.isStopped = false;
         isdancing = false;
     }
 
@@ -114,7 +121,7 @@ public class AiController : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
 
-        // Restart particles
+        //restart particules
         particleSystem.Play();
     }
 }

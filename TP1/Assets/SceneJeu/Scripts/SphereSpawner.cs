@@ -6,8 +6,8 @@ public class SphereSpawner : MonoBehaviour
 {
    
     //private Vector3 pos1 = new Vector3(-8,10,10);
-    private Vector3 pos3 = new Vector3(5,10,10);
-    private Vector3 pos2 = new Vector3(3,10,10);
+    private Vector3 pos3 = new Vector3(5,8,10);
+    private Vector3 pos2 = new Vector3(-3,8,10);
 
     public GameObject spawner;
 
