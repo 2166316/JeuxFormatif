@@ -8,6 +8,7 @@ public class AiController : MonoBehaviour
 {
 
     public UnityEngine.AI.NavMeshAgent ai; 
+    private bool isMoving;
     private Animator animator;
     public GameObject[] goals;
     private const string SPEED = "Speed";
@@ -33,6 +34,7 @@ public class AiController : MonoBehaviour
         int goalNb = goals.Length;
         goalActual = new GameObject();
         changeGoal();
+        //isMoving = false;
 
     }
 
@@ -66,24 +68,25 @@ public class AiController : MonoBehaviour
                 float nbSeconde = 10f;
                 StartCoroutine(RestartParticlesAfterDelay(particleSystem, nbSeconde));
                 StartCoroutine(StopPlayerDance());
+                //isMoving = false;
             }else{
                 changeGoal();
             }
         }
 
-        print(coll.gameObject.tag.ToString());
+        //print(coll.gameObject.tag.ToString());
         if(coll.gameObject.tag == "CrawlSpace"){
-            print(1);
+            //print(1);
             animator.SetBool(animatorCrawlHash, true);
             ai.speed = 0.8f;
         }
         else if(coll.gameObject.tag == "Walk"){
-            print(2);
+            //print(2);
              animator.SetBool(animatorCrawlHash, false);
             ai.speed = 1f;
         }
         else{
-            print(3);
+            //print(3);
             animator.SetBool(animatorCrawlHash, false);
             ai.speed = originalSpeed;
         }
@@ -94,12 +97,21 @@ public class AiController : MonoBehaviour
     void Update()
     {
         if(!isdancing){
+            isMoving = true;
             ai.isStopped = false;
-            ai.SetDestination(goalActual.transform.position);
+            if(ai.velocity.magnitude<0.2){
+                ai.SetDestination(goalActual.transform.position);
+            }
+ 
 
             float currentSpeed = ai.velocity.magnitude;
             animator.SetFloat(animatorVitesseHash, currentSpeed);
         }
+
+        if(ai.remainingDistance < 3){
+            ai.speed = 2;
+        }
+        
     }
 
 
