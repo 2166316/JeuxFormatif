@@ -7,11 +7,13 @@ public class NetworkManagerUI : MonoBehaviour {
     [SerializeField] private Button HostButton; 
     [SerializeField] private Button ClientButton; 
     private void Awake() { HostButton.onClick.AddListener(() => 
-    { NetworkManager.Singleton.StartHost(); 
-    }); 
+    { 
+            NetworkManager.Singleton.StartHost(); 
+        }); 
         
-        ClientButton.onClick.AddListener(() =>
-    { NetworkManager.Singleton.StartClient(); 
-    }); 
+    ClientButton.onClick.AddListener(() =>
+    { 
+            NetworkManager.Singleton.StartClient(); 
+        }); 
     } 
 }

@@ -10,6 +10,7 @@ public class TestCounter : NetworkBehaviour
     void Start()
     {
         
+
     }
 
     public override void OnNetworkSpawn()

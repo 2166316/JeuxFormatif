@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 public class Projectile : MonoBehaviour
 {
@@ -19,6 +22,7 @@ public class Projectile : MonoBehaviour
     {
         transform.position += shootDirection * Time.deltaTime * speed;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject != player && other.gameObject != gameObject)
@@ -28,8 +32,36 @@ public class Projectile : MonoBehaviour
                 GameObject hitImpact = Instantiate(hitParticles, transform.position, Quaternion.identity);
                 hitImpact.transform.localEulerAngles = new Vector3(0, 0, 90);
             }
-           
-            Destroy(gameObject);
+
+
+            DestroyRpc();
+        
+        }
+    }
+
+    //wait before destroying
+    private IEnumerator Despawn()
+    {
+        yield return new  WaitForSeconds(.5f);
+        var instanceNetworkObject = gameObject.GetComponent<NetworkObject>();
+        instanceNetworkObject.Despawn();
+
+    }
+
+    /// <summary>
+    /// Permet de détruire le rpc
+    /// </summary>
+    [Rpc(SendTo.Server)]
+    public void DestroyRpc()
+    {
+        try
+        {
+            StartCoroutine(Despawn());
+
+        }
+        catch(Exception e)
+        {
+            Debug.LogError(e.ToString());
         }
     }
 }

@@ -31,16 +31,15 @@ public class ShootController : NetworkBehaviour
         bool shoot = Input.GetKey(KeyCode.Space);
         if(shoot && nextShoot <= 0 )
         {
-            Shoot();
+            ShootRpc();
             nextShoot = shootDelay;
         }
 
     }
 
-    private void Shoot()
+    [Rpc(SendTo.Server)]
+    private void ShootRpc()
     {
-
-
         //Prepare the Rotation of the projectile
         Quaternion rotation = Quaternion.FromToRotation(Vector3.right,transform.forward);
         //Instantiate it
@@ -48,6 +47,14 @@ public class ShootController : NetworkBehaviour
         //Gives it its direction
         Vector3 shootDirection = transform.forward;
         projectile.GetComponent<Projectile>().Setup(shootDirection,gameObject);
+
+        //pour instancier sur le serveur
+        //Projectile proCon = projectile.GetComponent<Projectile>();
+        //proCon.Setup(shootDirection,gameObject);
+
+        //pour instancier sur le serveur
+        var instanceNetworkObject = projectile.GetComponent<NetworkObject>();
+        instanceNetworkObject.Spawn();
 
     }
 }
