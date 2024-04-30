@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
+using System;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     private Animator animator;
 
@@ -11,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     //HashCode vers les variables de l'Animator (permet de communiquer avec lui)
     private int animatorDancingHash;
-    // Start is called before the first frame update
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -19,10 +21,36 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        if(!IsHost && IsOwner)
+        {
+            UpdatePositionServerRpc();
+        }
+    }
+
+    [Rpc(SendTo.Server)]
+    private void UpdatePositionServerRpc()
+    {
+        transform.Translate(Vector3.left * 2);
+    }
+
     void Update()
     {
-        bool isDancing = Input.GetKey(KeyCode.Space);
+        //Debug.Log("d");
+
+        if (IsOwner)
+        {
+           bool isDancing = Input.GetKey(KeyCode.Space);
+            ManageDancingAnimationRpc(Input.GetKey(KeyCode.Space));
+            //animator.SetBool(animatorDancingHash, isDancing);
+        }
+    }
+
+    [RpcAttribute(SendTo.Server)]
+    private void ManageDancingAnimationRpc(bool isDancing)
+    {
         animator.SetBool(animatorDancingHash, isDancing);
     }
 }
